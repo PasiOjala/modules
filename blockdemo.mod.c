@@ -32,6 +32,8 @@ __attribute__((section("__versions"))) = {
 	{ 0x3f7e3ce4, __VMLINUX_SYMBOL_STR(__class_create) },
 	{ 0x67c2fa54, __VMLINUX_SYMBOL_STR(__copy_to_user) },
 	{ 0xefd6cf06, __VMLINUX_SYMBOL_STR(__aeabi_unwind_cpp_pr0) },
+	{ 0x432fd7f6, __VMLINUX_SYMBOL_STR(__gpio_set_value) },
+	{ 0xfa2a45e, __VMLINUX_SYMBOL_STR(__memzero) },
 	{ 0xfbc74f64, __VMLINUX_SYMBOL_STR(__copy_from_user) },
 	{ 0x2e5810c6, __VMLINUX_SYMBOL_STR(__aeabi_unwind_cpp_pr1) },
 	{ 0x27e1a049, __VMLINUX_SYMBOL_STR(printk) },
@@ -43,4 +45,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "22B3D358B84A997F8142C97");
+MODULE_INFO(srcversion, "CBD4A5C7CCF7E1ACA3F8FD9");

@@ -39,8 +39,10 @@ module_param(gpiobase,int,0444);
 
 #define C_IN(pin) gpio_request_one(pin,GPIOF_DIR_IN,#pin)
 #define C_OUTH(pin) gpio_request_one(pin,GPIOF_OUT_INIT_HIGH,#pin)
-#define C_OUTH(pin) gpio_request_one(pin,GPIOF_OUT_INIT_LOW,#pin)
+#define C_OUTL(pin) gpio_request_one(pin,GPIOF_OUT_INIT_LOW,#pin)
 #define UC(pin) gpio_free(pin)
+
+
 static void my_gpio_init(void){
     //gpio.txt doc at /linux
 //int    gpio_request_one(SELECT, GPIOF_DIR_IN , "SELECT");
@@ -70,7 +72,60 @@ static void my_gpio_exit(void){
     
 }
 
+static void set_on(char col){
+    int pin =RED;
+    if (col=='g') pin=GREEN;
+    if (col=='b') pin=BLUE;
+    
+    gpio_set_value(pin,0);
 
+}
+static void set_off(char col){
+    int pin =RED;
+    if (col=='g') pin=GREEN;
+    if (col=='b') pin=BLUE;
+    
+    gpio_set_value(pin,1);
+
+}
+
+static void process_buffer(){
+    
+    int index=0;
+    char color=0;
+    
+    while(buf[index]){
+    
+    switch(buf[index])
+    {
+        case 'r':
+        case 'R':
+            color='r';
+        break;
+        case 'g':
+        case 'G':
+            color='g';
+        break;
+        case 'b':
+        case 'B':
+            color='b';
+        break;
+        case '0':
+            if(color){
+            set_off(color);
+            color=0;}
+        break;
+        case '1':
+            set_on(color);
+            color=0;
+        break;
+        default: 
+            color=0;
+    }
+    index++;
+    }
+    memset(buf,0,BUFSIZE);
+}
 
 static DEFINE_SEMAPHORE(ioctlsem);
 // ei näinstatic size_t buflen;
@@ -110,6 +165,8 @@ remaining=copy_from_user(buf,ubuff,len);
 if (remaining){
     return -EFAULT  ;
 }
+
+process_buffer();
 // ei näin buflen=len;
 //optional
 *offs+=len;
