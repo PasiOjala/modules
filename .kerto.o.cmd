@@ -1,8 +1,8 @@
-cmd_/home/pi/ldd3-read-only/misc-modules/hello.o := gcc -Wp,-MD,/home/pi/ldd3-read-only/misc-modules/.hello.o.d  -nostdinc -isystem /usr/lib/gcc/arm-linux-gnueabihf/4.6/include -I/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include -Iarch/arm/include/generated  -Iinclude -I/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include/uapi -Iarch/arm/include/generated/uapi -I/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/uapi -Iinclude/generated/uapi -include /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-bcm2708/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -O2 -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -marm -D__LINUX_ARM_ARCH__=6 -march=armv6 -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(hello)"  -D"KBUILD_MODNAME=KBUILD_STR(hello)" -c -o /home/pi/ldd3-read-only/misc-modules/.tmp_hello.o /home/pi/ldd3-read-only/misc-modules/hello.c
+cmd_/home/pi/ldd3-read-only/misc-modules/kerto.o := gcc -Wp,-MD,/home/pi/ldd3-read-only/misc-modules/.kerto.o.d  -nostdinc -isystem /usr/lib/gcc/arm-linux-gnueabihf/4.6/include -I/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include -Iarch/arm/include/generated  -Iinclude -I/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include/uapi -Iarch/arm/include/generated/uapi -I/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/uapi -Iinclude/generated/uapi -include /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-bcm2708/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -O2 -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -marm -D__LINUX_ARM_ARCH__=6 -march=armv6 -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(kerto)"  -D"KBUILD_MODNAME=KBUILD_STR(kerto)" -c -o /home/pi/ldd3-read-only/misc-modules/.tmp_kerto.o /home/pi/ldd3-read-only/misc-modules/kerto.c
 
-source_/home/pi/ldd3-read-only/misc-modules/hello.o := /home/pi/ldd3-read-only/misc-modules/hello.c
+source_/home/pi/ldd3-read-only/misc-modules/kerto.o := /home/pi/ldd3-read-only/misc-modules/kerto.c
 
-deps_/home/pi/ldd3-read-only/misc-modules/hello.o := \
+deps_/home/pi/ldd3-read-only/misc-modules/kerto.o := \
   include/linux/init.h \
     $(wildcard include/config/broken/rodata.h) \
     $(wildcard include/config/modules.h) \
@@ -381,6 +381,6 @@ deps_/home/pi/ldd3-read-only/misc-modules/hello.o := \
     $(wildcard include/config/modules/use/elf/rel.h) \
     $(wildcard include/config/modules/use/elf/rela.h) \
 
-/home/pi/ldd3-read-only/misc-modules/hello.o: $(deps_/home/pi/ldd3-read-only/misc-modules/hello.o)
+/home/pi/ldd3-read-only/misc-modules/kerto.o: $(deps_/home/pi/ldd3-read-only/misc-modules/kerto.o)
 
-$(deps_/home/pi/ldd3-read-only/misc-modules/hello.o):
+$(deps_/home/pi/ldd3-read-only/misc-modules/kerto.o):

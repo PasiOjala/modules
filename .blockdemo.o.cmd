@@ -1,8 +1,8 @@
-cmd_/home/pi/ldd3-read-only/misc-modules/hello.o := gcc -Wp,-MD,/home/pi/ldd3-read-only/misc-modules/.hello.o.d  -nostdinc -isystem /usr/lib/gcc/arm-linux-gnueabihf/4.6/include -I/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include -Iarch/arm/include/generated  -Iinclude -I/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include/uapi -Iarch/arm/include/generated/uapi -I/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/uapi -Iinclude/generated/uapi -include /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-bcm2708/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -O2 -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -marm -D__LINUX_ARM_ARCH__=6 -march=armv6 -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(hello)"  -D"KBUILD_MODNAME=KBUILD_STR(hello)" -c -o /home/pi/ldd3-read-only/misc-modules/.tmp_hello.o /home/pi/ldd3-read-only/misc-modules/hello.c
+cmd_/home/pi/ldd3-read-only/misc-modules/blockdemo.o := gcc -Wp,-MD,/home/pi/ldd3-read-only/misc-modules/.blockdemo.o.d  -nostdinc -isystem /usr/lib/gcc/arm-linux-gnueabihf/4.6/include -I/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include -Iarch/arm/include/generated  -Iinclude -I/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include/uapi -Iarch/arm/include/generated/uapi -I/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/uapi -Iinclude/generated/uapi -include /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/linux/kconfig.h -D__KERNEL__ -mlittle-endian -Iarch/arm/mach-bcm2708/include -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -Werror-implicit-function-declaration -Wno-format-security -fno-delete-null-pointer-checks -O2 -fno-dwarf2-cfi-asm -fstack-protector -mabi=aapcs-linux -mno-thumb-interwork -funwind-tables -marm -D__LINUX_ARM_ARCH__=6 -march=armv6 -mtune=arm1136j-s -msoft-float -Uarm -Wframe-larger-than=1024 -Wno-unused-but-set-variable -fomit-frame-pointer -fno-var-tracking-assignments -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fconserve-stack  -DMODULE  -D"KBUILD_STR(s)=\#s" -D"KBUILD_BASENAME=KBUILD_STR(blockdemo)"  -D"KBUILD_MODNAME=KBUILD_STR(blockdemo)" -c -o /home/pi/ldd3-read-only/misc-modules/.tmp_blockdemo.o /home/pi/ldd3-read-only/misc-modules/blockdemo.c
 
-source_/home/pi/ldd3-read-only/misc-modules/hello.o := /home/pi/ldd3-read-only/misc-modules/hello.c
+source_/home/pi/ldd3-read-only/misc-modules/blockdemo.o := /home/pi/ldd3-read-only/misc-modules/blockdemo.c
 
-deps_/home/pi/ldd3-read-only/misc-modules/hello.o := \
+deps_/home/pi/ldd3-read-only/misc-modules/blockdemo.o := \
   include/linux/init.h \
     $(wildcard include/config/broken/rodata.h) \
     $(wildcard include/config/modules.h) \
@@ -380,7 +380,119 @@ deps_/home/pi/ldd3-read-only/misc-modules/hello.o := \
     $(wildcard include/config/have/mod/arch/specific.h) \
     $(wildcard include/config/modules/use/elf/rel.h) \
     $(wildcard include/config/modules/use/elf/rela.h) \
+  include/linux/device.h \
+    $(wildcard include/config/debug/devres.h) \
+    $(wildcard include/config/acpi.h) \
+    $(wildcard include/config/pinctrl.h) \
+    $(wildcard include/config/dma/cma.h) \
+    $(wildcard include/config/devtmpfs.h) \
+    $(wildcard include/config/sysfs/deprecated.h) \
+  include/linux/ioport.h \
+  include/linux/klist.h \
+  include/linux/pinctrl/devinfo.h \
+    $(wildcard include/config/pm.h) \
+  include/linux/pm.h \
+    $(wildcard include/config/vt/console/sleep.h) \
+    $(wildcard include/config/pm/runtime.h) \
+    $(wildcard include/config/pm/clk.h) \
+    $(wildcard include/config/pm/generic/domains.h) \
+  include/linux/ratelimit.h \
+  /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include/asm/device.h \
+    $(wildcard include/config/dmabounce.h) \
+    $(wildcard include/config/iommu/api.h) \
+    $(wildcard include/config/arm/dma/use/iommu.h) \
+    $(wildcard include/config/arch/omap.h) \
+  include/linux/pm_wakeup.h \
+  include/linux/fs.h \
+    $(wildcard include/config/fs/posix/acl.h) \
+    $(wildcard include/config/security.h) \
+    $(wildcard include/config/quota.h) \
+    $(wildcard include/config/fsnotify.h) \
+    $(wildcard include/config/ima.h) \
+    $(wildcard include/config/epoll.h) \
+    $(wildcard include/config/debug/writecount.h) \
+    $(wildcard include/config/file/locking.h) \
+    $(wildcard include/config/auditsyscall.h) \
+    $(wildcard include/config/block.h) \
+    $(wildcard include/config/fs/xip.h) \
+    $(wildcard include/config/migration.h) \
+  include/linux/kdev_t.h \
+  include/uapi/linux/kdev_t.h \
+  include/linux/dcache.h \
+  include/linux/rculist.h \
+  include/linux/rculist_bl.h \
+  include/linux/list_bl.h \
+  include/linux/bit_spinlock.h \
+  include/linux/lockref.h \
+    $(wildcard include/config/cmpxchg/lockref.h) \
+  include/linux/path.h \
+  include/linux/list_lru.h \
+  include/linux/llist.h \
+    $(wildcard include/config/arch/have/nmi/safe/cmpxchg.h) \
+  include/linux/radix-tree.h \
+  include/linux/pid.h \
+  include/linux/capability.h \
+  include/uapi/linux/capability.h \
+  include/linux/semaphore.h \
+  /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/uapi/linux/fiemap.h \
+  include/linux/shrinker.h \
+  include/linux/migrate_mode.h \
+  include/linux/percpu-rwsem.h \
+  include/linux/blk_types.h \
+    $(wildcard include/config/blk/cgroup.h) \
+    $(wildcard include/config/blk/dev/integrity.h) \
+  include/uapi/linux/fs.h \
+  /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/uapi/linux/limits.h \
+  /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/uapi/linux/ioctl.h \
+  arch/arm/include/generated/asm/ioctl.h \
+  include/asm-generic/ioctl.h \
+  include/uapi/asm-generic/ioctl.h \
+  include/linux/quota.h \
+    $(wildcard include/config/quota/netlink/interface.h) \
+  include/linux/percpu_counter.h \
+  /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/uapi/linux/dqblk_xfs.h \
+  include/linux/dqblk_v1.h \
+  include/linux/dqblk_v2.h \
+  include/linux/dqblk_qtree.h \
+  include/linux/projid.h \
+  include/uapi/linux/quota.h \
+  include/linux/nfs_fs_i.h \
+  include/linux/fcntl.h \
+  include/uapi/linux/fcntl.h \
+  /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include/uapi/asm/fcntl.h \
+  /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/include/uapi/asm-generic/fcntl.h \
+  include/linux/err.h \
+  include/linux/cdev.h \
+  include/linux/uaccess.h \
+  /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include/asm/uaccess.h \
+  /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include/asm/unified.h \
+    $(wildcard include/config/arm/asm/unified.h) \
+  include/linux/gpio.h \
+    $(wildcard include/config/gpiolib.h) \
+    $(wildcard include/config/arch/have/custom/gpio/h.h) \
+  /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/arch/arm/include/asm/gpio.h \
+    $(wildcard include/config/arch/nr/gpio.h) \
+    $(wildcard include/config/need/mach/gpio/h.h) \
+  arch/arm/mach-bcm2708/include/mach/gpio.h \
+  include/asm-generic/gpio.h \
+    $(wildcard include/config/of/gpio.h) \
+    $(wildcard include/config/of.h) \
+    $(wildcard include/config/gpio/sysfs.h) \
+  include/linux/of.h \
+    $(wildcard include/config/sparc.h) \
+    $(wildcard include/config/of/dynamic.h) \
+    $(wildcard include/config/attach/node.h) \
+    $(wildcard include/config/detach/node.h) \
+    $(wildcard include/config/add/property.h) \
+    $(wildcard include/config/remove/property.h) \
+    $(wildcard include/config/update/property.h) \
+    $(wildcard include/config/proc/fs.h) \
+    $(wildcard include/config/proc/devicetree.h) \
+  include/linux/mod_devicetable.h \
+  include/linux/uuid.h \
+  include/uapi/linux/uuid.h \
+  include/linux/pinctrl/pinctrl.h \
 
-/home/pi/ldd3-read-only/misc-modules/hello.o: $(deps_/home/pi/ldd3-read-only/misc-modules/hello.o)
+/home/pi/ldd3-read-only/misc-modules/blockdemo.o: $(deps_/home/pi/ldd3-read-only/misc-modules/blockdemo.o)
 
-$(deps_/home/pi/ldd3-read-only/misc-modules/hello.o):
+$(deps_/home/pi/ldd3-read-only/misc-modules/blockdemo.o):

@@ -247,7 +247,7 @@ static int jiq_init(void)
 //	create_proc_read_entry("jiqwqdelay", 0, NULL, jiq_read_wq_delayed, NULL);
 //	create_proc_read_entry("jitimer", 0, NULL, jiq_read_run_timer, NULL);
 //	create_proc_read_entry("jiqtasklet", 0, NULL, jiq_read_tasklet, NULL);
-	proc_create_data("jiqwq", 0, NULL, &jiq_read_wq, NULL);
+	proc_create_data("jiqwq", 0, NULL, &jiq_read_wq, NULL); 
 	proc_create_data("jiqwqdelay", 0, NULL, &jiq_read_wq_delayed, NULL);
 	proc_create_data("jitimer", 0, NULL, &jiq_read_run_timer, NULL);
 	proc_create_data("jiqtasklet", 0, NULL, &jiq_read_tasklet, NULL);

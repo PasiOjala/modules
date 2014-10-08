@@ -1,3 +1,8 @@
+kernel//home/pi/ldd3-read-only/misc-modules/blockdemo.ko
+kernel//home/pi/ldd3-read-only/misc-modules/rwdemo.ko
+kernel//home/pi/ldd3-read-only/misc-modules/fifodemo.ko
+kernel//home/pi/ldd3-read-only/misc-modules/devdemo.ko
+kernel//home/pi/ldd3-read-only/misc-modules/kerto.ko
 kernel//home/pi/ldd3-read-only/misc-modules/hello.ko
 kernel//home/pi/ldd3-read-only/misc-modules/hellop.ko
 kernel//home/pi/ldd3-read-only/misc-modules/seq.ko

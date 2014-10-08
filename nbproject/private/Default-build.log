@@ -1,0 +1,71 @@
+/usr/bin/make -C /lib/modules/3.12.28+/build M=/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules modules
+make[1]: Entering directory '/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3'
+  CC [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/hello.o
+  CC [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/hellop.o
+  CC [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/seq.o
+  CC [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jit.o
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jit.c: In function ‘jit_init’:
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jit.c:278:6: warning: passing argument 4 of ‘proc_create_data’ from incompatible pointer type [enabled by default]
+include/linux/proc_fs.h:25:31: note: expected ‘const struct file_operations *’ but argument is of type ‘int (*)(char *, char **, off_t,  int,  int *, void *)’
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jit.c:279:2: warning: passing argument 4 of ‘proc_create_data’ from incompatible pointer type [enabled by default]
+include/linux/proc_fs.h:25:31: note: expected ‘const struct file_operations *’ but argument is of type ‘int (*)(char *, char **, off_t,  int,  int *, void *)’
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jit.c:280:2: warning: passing argument 4 of ‘proc_create_data’ from incompatible pointer type [enabled by default]
+include/linux/proc_fs.h:25:31: note: expected ‘const struct file_operations *’ but argument is of type ‘int (*)(char *, char **, off_t,  int,  int *, void *)’
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jit.c:281:2: warning: passing argument 4 of ‘proc_create_data’ from incompatible pointer type [enabled by default]
+include/linux/proc_fs.h:25:31: note: expected ‘const struct file_operations *’ but argument is of type ‘int (*)(char *, char **, off_t,  int,  int *, void *)’
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jit.c:282:2: warning: passing argument 4 of ‘proc_create_data’ from incompatible pointer type [enabled by default]
+include/linux/proc_fs.h:25:31: note: expected ‘const struct file_operations *’ but argument is of type ‘int (*)(char *, char **, off_t,  int,  int *, void *)’
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jit.c:284:2: warning: passing argument 4 of ‘proc_create_data’ from incompatible pointer type [enabled by default]
+include/linux/proc_fs.h:25:31: note: expected ‘const struct file_operations *’ but argument is of type ‘int (*)(char *, char **, off_t,  int,  int *, void *)’
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jit.c:285:2: warning: passing argument 4 of ‘proc_create_data’ from incompatible pointer type [enabled by default]
+include/linux/proc_fs.h:25:31: note: expected ‘const struct file_operations *’ but argument is of type ‘int (*)(char *, char **, off_t,  int,  int *, void *)’
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jit.c:286:2: warning: passing argument 4 of ‘proc_create_data’ from incompatible pointer type [enabled by default]
+include/linux/proc_fs.h:25:31: note: expected ‘const struct file_operations *’ but argument is of type ‘int (*)(char *, char **, off_t,  int,  int *, void *)’
+  CC [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.o
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.c: In function ‘jiq_print_wq’:
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.c:122:3: warning: passing argument 1 of ‘schedule_delayed_work’ from incompatible pointer type [enabled by default]
+include/linux/workqueue.h:594:20: note: expected ‘struct delayed_work *’ but argument is of type ‘struct work_struct *’
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.c: In function ‘jiq_read_wq_delayed’:
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.c:160:2: warning: passing argument 1 of ‘schedule_delayed_work’ from incompatible pointer type [enabled by default]
+include/linux/workqueue.h:594:20: note: expected ‘struct delayed_work *’ but argument is of type ‘struct work_struct *’
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.c: In function ‘jiq_init’:
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.c:245:9: warning: assignment from incompatible pointer type [enabled by default]
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.c:250:2: warning: passing argument 4 of ‘proc_create_data’ from incompatible pointer type [enabled by default]
+include/linux/proc_fs.h:25:31: note: expected ‘const struct file_operations *’ but argument is of type ‘int (*)(char *, char **, off_t,  int,  int *, void *)’
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.c:251:2: warning: passing argument 4 of ‘proc_create_data’ from incompatible pointer type [enabled by default]
+include/linux/proc_fs.h:25:31: note: expected ‘const struct file_operations *’ but argument is of type ‘int (*)(char *, char **, off_t,  int,  int *, void *)’
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.c:252:2: warning: passing argument 4 of ‘proc_create_data’ from incompatible pointer type [enabled by default]
+include/linux/proc_fs.h:25:31: note: expected ‘const struct file_operations *’ but argument is of type ‘int (*)(char *, char **, off_t,  int,  int *, void *)’
+/home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.c:253:2: warning: passing argument 4 of ‘proc_create_data’ from incompatible pointer type [enabled by default]
+include/linux/proc_fs.h:25:31: note: expected ‘const struct file_operations *’ but argument is of type ‘int (*)(char *, char **, off_t,  int,  int *, void *)’
+  CC [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/sleepy.o
+  CC [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/complete.o
+  CC [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/silly.o
+  CC [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/faulty.o
+  CC [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/kdatasize.o
+  CC [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/kdataalign.o
+  Building modules, stage 2.
+  MODPOST 11 modules
+  CC      /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/complete.mod.o
+  LD [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/complete.ko
+  CC      /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/faulty.mod.o
+  LD [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/faulty.ko
+  CC      /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/hello.mod.o
+  LD [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/hello.ko
+  CC      /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/hellop.mod.o
+  LD [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/hellop.ko
+  CC      /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.mod.o
+  LD [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jiq.ko
+  CC      /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jit.mod.o
+  LD [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/jit.ko
+  CC      /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/kdataalign.mod.o
+  LD [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/kdataalign.ko
+  CC      /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/kdatasize.mod.o
+  LD [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/kdatasize.ko
+  CC      /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/seq.mod.o
+  LD [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/seq.ko
+  CC      /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/silly.mod.o
+  LD [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/silly.ko
+  CC      /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/sleepy.mod.o
+  LD [M]  /home/pi/.netbeans/remote/pasipii/tyod-atk14-c02-Windows-x86/pasipii/pi/ldd3-read-only/misc-modules/sleepy.ko
+make[1]: Leaving directory '/home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3'
