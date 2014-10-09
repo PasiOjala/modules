@@ -4,7 +4,7 @@
 
 MODULE_INFO(vermagic, VERMAGIC_STRING);
 
-struct module __this_module
+__visible struct module __this_module
 __attribute__((section(".gnu.linkonce.this_module"))) = {
 	.name = KBUILD_MODNAME,
 	.init = init_module,
@@ -17,28 +17,29 @@ __attribute__((section(".gnu.linkonce.this_module"))) = {
 static const struct modversion_info ____versions[]
 __used
 __attribute__((section("__versions"))) = {
-	{ 0x9546d51a, __VMLINUX_SYMBOL_STR(module_layout) },
+	{ 0x11c92bdf, __VMLINUX_SYMBOL_STR(module_layout) },
 	{ 0x6ebc5149, __VMLINUX_SYMBOL_STR(param_ops_long) },
-	{ 0x701e6c2c, __VMLINUX_SYMBOL_STR(remove_proc_entry) },
-	{ 0x1dc2330e, __VMLINUX_SYMBOL_STR(proc_create_data) },
-	{ 0x2e5810c6, __VMLINUX_SYMBOL_STR(__aeabi_unwind_cpp_pr1) },
+	{ 0x7cc137e5, __VMLINUX_SYMBOL_STR(remove_proc_entry) },
+	{ 0x8bc20274, __VMLINUX_SYMBOL_STR(proc_create_data) },
+	{ 0xfaef0ed, __VMLINUX_SYMBOL_STR(__tasklet_schedule) },
 	{ 0xb2d48a2e, __VMLINUX_SYMBOL_STR(queue_work_on) },
-	{ 0x2d3385d3, __VMLINUX_SYMBOL_STR(system_wq) },
-	{ 0xc8b57c27, __VMLINUX_SYMBOL_STR(autoremove_wake_function) },
-	{ 0x8893fa5d, __VMLINUX_SYMBOL_STR(finish_wait) },
-	{ 0x1000e51, __VMLINUX_SYMBOL_STR(schedule) },
+	{ 0x75bb675a, __VMLINUX_SYMBOL_STR(finish_wait) },
+	{ 0x4292364c, __VMLINUX_SYMBOL_STR(schedule) },
 	{ 0xe851bb05, __VMLINUX_SYMBOL_STR(queue_delayed_work_on) },
-	{ 0x75a17bed, __VMLINUX_SYMBOL_STR(prepare_to_wait) },
-	{ 0xc996d097, __VMLINUX_SYMBOL_STR(del_timer) },
+	{ 0x2d3385d3, __VMLINUX_SYMBOL_STR(system_wq) },
+	{ 0x622fa02a, __VMLINUX_SYMBOL_STR(prepare_to_wait) },
+	{ 0xc8b57c27, __VMLINUX_SYMBOL_STR(autoremove_wake_function) },
+	{ 0xd5f2172f, __VMLINUX_SYMBOL_STR(del_timer_sync) },
+	{ 0x62cb4cee, __VMLINUX_SYMBOL_STR(interruptible_sleep_on) },
 	{ 0xbe2c0274, __VMLINUX_SYMBOL_STR(add_timer) },
 	{ 0x593a99b, __VMLINUX_SYMBOL_STR(init_timer_key) },
-	{ 0x562ad513, __VMLINUX_SYMBOL_STR(interruptible_sleep_on) },
-	{ 0xfaef0ed, __VMLINUX_SYMBOL_STR(__tasklet_schedule) },
-	{ 0xefd6cf06, __VMLINUX_SYMBOL_STR(__aeabi_unwind_cpp_pr0) },
-	{ 0x7d11c268, __VMLINUX_SYMBOL_STR(jiffies) },
-	{ 0xb9e52429, __VMLINUX_SYMBOL_STR(__wake_up) },
-	{ 0x9d669763, __VMLINUX_SYMBOL_STR(memcpy) },
+	{ 0xe45f60d8, __VMLINUX_SYMBOL_STR(__wake_up) },
 	{ 0x91715312, __VMLINUX_SYMBOL_STR(sprintf) },
+	{ 0x601909b6, __VMLINUX_SYMBOL_STR(current_task) },
+	{ 0x54efb5d6, __VMLINUX_SYMBOL_STR(cpu_number) },
+	{ 0x4629334c, __VMLINUX_SYMBOL_STR(__preempt_count) },
+	{ 0x7d11c268, __VMLINUX_SYMBOL_STR(jiffies) },
+	{ 0xb4390f9a, __VMLINUX_SYMBOL_STR(mcount) },
 };
 
 static const char __module_depends[]

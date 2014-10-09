@@ -1,2 +1,2 @@
-/home/pi/ldd3-read-only/misc-modules/seq.ko
-/home/pi/ldd3-read-only/misc-modules/seq.o
+/home/user/modules/seq.ko
+/home/user/modules/seq.o

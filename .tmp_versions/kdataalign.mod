@@ -1,2 +1,2 @@
-/home/pi/ldd3-read-only/misc-modules/kdataalign.ko
-/home/pi/ldd3-read-only/misc-modules/kdataalign.o
+/home/user/modules/kdataalign.ko
+/home/user/modules/kdataalign.o

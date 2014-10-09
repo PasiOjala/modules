@@ -1,2 +1,2 @@
-/home/pi/ldd3-read-only/misc-modules/kdatasize.ko
-/home/pi/ldd3-read-only/misc-modules/kdatasize.o
+/home/user/modules/kdatasize.ko
+/home/user/modules/kdatasize.o

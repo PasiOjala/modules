@@ -4,7 +4,7 @@
 
 MODULE_INFO(vermagic, VERMAGIC_STRING);
 
-struct module __this_module
+__visible struct module __this_module
 __attribute__((section(".gnu.linkonce.this_module"))) = {
 	.name = KBUILD_MODNAME,
 	.init = init_module,
@@ -17,22 +17,24 @@ __attribute__((section(".gnu.linkonce.this_module"))) = {
 static const struct modversion_info ____versions[]
 __used
 __attribute__((section("__versions"))) = {
-	{ 0x9546d51a, __VMLINUX_SYMBOL_STR(module_layout) },
+	{ 0x11c92bdf, __VMLINUX_SYMBOL_STR(module_layout) },
 	{ 0xb6b46a7c, __VMLINUX_SYMBOL_STR(param_ops_int) },
 	{ 0x6bc3fbc0, __VMLINUX_SYMBOL_STR(__unregister_chrdev) },
-	{ 0xc2165d85, __VMLINUX_SYMBOL_STR(__arm_iounmap) },
-	{ 0x27e1a049, __VMLINUX_SYMBOL_STR(printk) },
-	{ 0xfb961d14, __VMLINUX_SYMBOL_STR(__arm_ioremap) },
-	{ 0x5ac90a48, __VMLINUX_SYMBOL_STR(__register_chrdev) },
-	{ 0x67c2fa54, __VMLINUX_SYMBOL_STR(__copy_to_user) },
-	{ 0x1ad1f2e7, __VMLINUX_SYMBOL_STR(_memcpy_fromio) },
-	{ 0x7f63b31e, __VMLINUX_SYMBOL_STR(_memcpy_toio) },
-	{ 0xfbc74f64, __VMLINUX_SYMBOL_STR(__copy_from_user) },
+	{ 0xedc03953, __VMLINUX_SYMBOL_STR(iounmap) },
+	{ 0x50eedeb8, __VMLINUX_SYMBOL_STR(printk) },
+	{ 0x42c8de35, __VMLINUX_SYMBOL_STR(ioremap_nocache) },
+	{ 0x40851225, __VMLINUX_SYMBOL_STR(__register_chrdev) },
+	{ 0xc5534d64, __VMLINUX_SYMBOL_STR(ioread16) },
+	{ 0xf10de535, __VMLINUX_SYMBOL_STR(ioread8) },
+	{ 0xe484e35f, __VMLINUX_SYMBOL_STR(ioread32) },
+	{ 0x4f8b5ddb, __VMLINUX_SYMBOL_STR(_copy_to_user) },
+	{ 0x727c4f3, __VMLINUX_SYMBOL_STR(iowrite8) },
 	{ 0x37a0cba, __VMLINUX_SYMBOL_STR(kfree) },
-	{ 0xfa2a45e, __VMLINUX_SYMBOL_STR(__memzero) },
+	{ 0x2e60bace, __VMLINUX_SYMBOL_STR(memcpy) },
+	{ 0x4f6b400b, __VMLINUX_SYMBOL_STR(_copy_from_user) },
 	{ 0x12da5bb2, __VMLINUX_SYMBOL_STR(__kmalloc) },
 	{ 0xc6cbbc89, __VMLINUX_SYMBOL_STR(capable) },
-	{ 0xefd6cf06, __VMLINUX_SYMBOL_STR(__aeabi_unwind_cpp_pr0) },
+	{ 0xb4390f9a, __VMLINUX_SYMBOL_STR(mcount) },
 };
 
 static const char __module_depends[]

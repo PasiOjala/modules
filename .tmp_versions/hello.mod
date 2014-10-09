@@ -1,2 +1,2 @@
-/home/pi/ldd3-read-only/misc-modules/hello.ko
-/home/pi/ldd3-read-only/misc-modules/hello.o
+/home/user/modules/hello.ko
+/home/user/modules/hello.o

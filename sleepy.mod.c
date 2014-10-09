@@ -4,7 +4,7 @@
 
 MODULE_INFO(vermagic, VERMAGIC_STRING);
 
-struct module __this_module
+__visible struct module __this_module
 __attribute__((section(".gnu.linkonce.this_module"))) = {
 	.name = KBUILD_MODNAME,
 	.init = init_module,
@@ -17,16 +17,16 @@ __attribute__((section(".gnu.linkonce.this_module"))) = {
 static const struct modversion_info ____versions[]
 __used
 __attribute__((section("__versions"))) = {
-	{ 0x9546d51a, __VMLINUX_SYMBOL_STR(module_layout) },
+	{ 0x11c92bdf, __VMLINUX_SYMBOL_STR(module_layout) },
 	{ 0x6bc3fbc0, __VMLINUX_SYMBOL_STR(__unregister_chrdev) },
-	{ 0x5ac90a48, __VMLINUX_SYMBOL_STR(__register_chrdev) },
-	{ 0xc8b57c27, __VMLINUX_SYMBOL_STR(autoremove_wake_function) },
-	{ 0x8893fa5d, __VMLINUX_SYMBOL_STR(finish_wait) },
-	{ 0x75a17bed, __VMLINUX_SYMBOL_STR(prepare_to_wait) },
-	{ 0x1000e51, __VMLINUX_SYMBOL_STR(schedule) },
-	{ 0xefd6cf06, __VMLINUX_SYMBOL_STR(__aeabi_unwind_cpp_pr0) },
-	{ 0xb9e52429, __VMLINUX_SYMBOL_STR(__wake_up) },
-	{ 0x27e1a049, __VMLINUX_SYMBOL_STR(printk) },
+	{ 0x40851225, __VMLINUX_SYMBOL_STR(__register_chrdev) },
+	{ 0xe45f60d8, __VMLINUX_SYMBOL_STR(__wake_up) },
+	{ 0x75bb675a, __VMLINUX_SYMBOL_STR(finish_wait) },
+	{ 0xa56d356, __VMLINUX_SYMBOL_STR(prepare_to_wait_event) },
+	{ 0x4292364c, __VMLINUX_SYMBOL_STR(schedule) },
+	{ 0x50eedeb8, __VMLINUX_SYMBOL_STR(printk) },
+	{ 0x601909b6, __VMLINUX_SYMBOL_STR(current_task) },
+	{ 0xb4390f9a, __VMLINUX_SYMBOL_STR(mcount) },
 };
 
 static const char __module_depends[]

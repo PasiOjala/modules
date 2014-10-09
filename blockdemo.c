@@ -89,7 +89,7 @@ static void set_off(char col){
 
 }
 
-static void process_buffer(){
+static void process_buffer(void){
     
     int index=0;
     char color=0;

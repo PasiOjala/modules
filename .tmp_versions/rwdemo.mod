@@ -1,2 +1,2 @@
-/home/pi/ldd3-read-only/misc-modules/rwdemo.ko
-/home/pi/ldd3-read-only/misc-modules/rwdemo.o
+/home/user/modules/rwdemo.ko
+/home/user/modules/rwdemo.o

@@ -1,2 +1,2 @@
-/home/pi/ldd3-read-only/misc-modules/devdemo.ko
-/home/pi/ldd3-read-only/misc-modules/devdemo.o
+/home/user/modules/devdemo.ko
+/home/user/modules/devdemo.o

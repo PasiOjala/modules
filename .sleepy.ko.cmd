@@ -1,1 +1,1 @@
-cmd_/home/pi/ldd3-read-only/misc-modules/sleepy.ko := ld -EL -r  -T /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/scripts/module-common.lds --build-id  -o /home/pi/ldd3-read-only/misc-modules/sleepy.ko /home/pi/ldd3-read-only/misc-modules/sleepy.o /home/pi/ldd3-read-only/misc-modules/sleepy.mod.o
+cmd_/home/user/modules/sleepy.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.13.0-24-generic/scripts/module-common.lds --build-id  -o /home/user/modules/sleepy.ko /home/user/modules/sleepy.o /home/user/modules/sleepy.mod.o

@@ -4,7 +4,7 @@
 
 MODULE_INFO(vermagic, VERMAGIC_STRING);
 
-struct module __this_module
+__visible struct module __this_module
 __attribute__((section(".gnu.linkonce.this_module"))) = {
 	.name = KBUILD_MODNAME,
 	.init = init_module,
@@ -17,33 +17,33 @@ __attribute__((section(".gnu.linkonce.this_module"))) = {
 static const struct modversion_info ____versions[]
 __used
 __attribute__((section("__versions"))) = {
-	{ 0x9546d51a, __VMLINUX_SYMBOL_STR(module_layout) },
+	{ 0x11c92bdf, __VMLINUX_SYMBOL_STR(module_layout) },
 	{ 0xb6b46a7c, __VMLINUX_SYMBOL_STR(param_ops_int) },
-	{ 0x2e5810c6, __VMLINUX_SYMBOL_STR(__aeabi_unwind_cpp_pr1) },
-	{ 0x701e6c2c, __VMLINUX_SYMBOL_STR(remove_proc_entry) },
-	{ 0x1dc2330e, __VMLINUX_SYMBOL_STR(proc_create_data) },
-	{ 0xd62c833f, __VMLINUX_SYMBOL_STR(schedule_timeout) },
+	{ 0x7cc137e5, __VMLINUX_SYMBOL_STR(remove_proc_entry) },
+	{ 0x8bc20274, __VMLINUX_SYMBOL_STR(proc_create_data) },
+	{ 0x47939e0d, __VMLINUX_SYMBOL_STR(__tasklet_hi_schedule) },
+	{ 0xfaef0ed, __VMLINUX_SYMBOL_STR(__tasklet_schedule) },
+	{ 0x9545af6d, __VMLINUX_SYMBOL_STR(tasklet_init) },
+	{ 0x37a0cba, __VMLINUX_SYMBOL_STR(kfree) },
+	{ 0x593a99b, __VMLINUX_SYMBOL_STR(init_timer_key) },
+	{ 0xd3813bef, __VMLINUX_SYMBOL_STR(kmem_cache_alloc_trace) },
+	{ 0x7f457a3b, __VMLINUX_SYMBOL_STR(kmalloc_caches) },
+	{ 0xbe2c0274, __VMLINUX_SYMBOL_STR(add_timer) },
+	{ 0xe45f60d8, __VMLINUX_SYMBOL_STR(__wake_up) },
+	{ 0x54efb5d6, __VMLINUX_SYMBOL_STR(cpu_number) },
+	{ 0x4629334c, __VMLINUX_SYMBOL_STR(__preempt_count) },
 	{ 0x34184afe, __VMLINUX_SYMBOL_STR(current_kernel_time) },
 	{ 0x4f68e5c9, __VMLINUX_SYMBOL_STR(do_gettimeofday) },
 	{ 0x37e74642, __VMLINUX_SYMBOL_STR(get_jiffies_64) },
-	{ 0xbe2c0274, __VMLINUX_SYMBOL_STR(add_timer) },
-	{ 0x593a99b, __VMLINUX_SYMBOL_STR(init_timer_key) },
-	{ 0xb9e52429, __VMLINUX_SYMBOL_STR(__wake_up) },
-	{ 0xefd6cf06, __VMLINUX_SYMBOL_STR(__aeabi_unwind_cpp_pr0) },
-	{ 0xc8b57c27, __VMLINUX_SYMBOL_STR(autoremove_wake_function) },
-	{ 0x7d11c268, __VMLINUX_SYMBOL_STR(jiffies) },
-	{ 0x8ef51045, __VMLINUX_SYMBOL_STR(kmalloc_caches) },
-	{ 0xfaef0ed, __VMLINUX_SYMBOL_STR(__tasklet_schedule) },
-	{ 0x47939e0d, __VMLINUX_SYMBOL_STR(__tasklet_hi_schedule) },
-	{ 0x37a0cba, __VMLINUX_SYMBOL_STR(kfree) },
-	{ 0x8893fa5d, __VMLINUX_SYMBOL_STR(finish_wait) },
-	{ 0x75a17bed, __VMLINUX_SYMBOL_STR(prepare_to_wait) },
-	{ 0x1000e51, __VMLINUX_SYMBOL_STR(schedule) },
-	{ 0x9545af6d, __VMLINUX_SYMBOL_STR(tasklet_init) },
+	{ 0x4292364c, __VMLINUX_SYMBOL_STR(schedule) },
+	{ 0x75bb675a, __VMLINUX_SYMBOL_STR(finish_wait) },
+	{ 0xa56d356, __VMLINUX_SYMBOL_STR(prepare_to_wait_event) },
 	{ 0x91715312, __VMLINUX_SYMBOL_STR(sprintf) },
-	{ 0x9d669763, __VMLINUX_SYMBOL_STR(memcpy) },
-	{ 0x63b87fc5, __VMLINUX_SYMBOL_STR(__init_waitqueue_head) },
-	{ 0xd511a1f3, __VMLINUX_SYMBOL_STR(kmem_cache_alloc) },
+	{        0, __VMLINUX_SYMBOL_STR(schedule_timeout) },
+	{ 0x601909b6, __VMLINUX_SYMBOL_STR(current_task) },
+	{ 0x7d11c268, __VMLINUX_SYMBOL_STR(jiffies) },
+	{ 0x68dfc59f, __VMLINUX_SYMBOL_STR(__init_waitqueue_head) },
+	{ 0xb4390f9a, __VMLINUX_SYMBOL_STR(mcount) },
 };
 
 static const char __module_depends[]

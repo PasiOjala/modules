@@ -1,2 +1,2 @@
-/home/pi/ldd3-read-only/misc-modules/complete.ko
-/home/pi/ldd3-read-only/misc-modules/complete.o
+/home/user/modules/complete.ko
+/home/user/modules/complete.o

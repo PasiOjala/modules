@@ -1,2 +1,2 @@
-/home/pi/ldd3-read-only/misc-modules/kerto.ko
-/home/pi/ldd3-read-only/misc-modules/kerto.o
+/home/user/modules/kerto.ko
+/home/user/modules/kerto.o

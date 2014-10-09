@@ -1,2 +1,2 @@
-/home/pi/ldd3-read-only/misc-modules/jiq.ko
-/home/pi/ldd3-read-only/misc-modules/jiq.o
+/home/user/modules/jiq.ko
+/home/user/modules/jiq.o

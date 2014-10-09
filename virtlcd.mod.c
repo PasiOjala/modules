@@ -18,16 +18,9 @@ static const struct modversion_info ____versions[]
 __used
 __attribute__((section("__versions"))) = {
 	{ 0x11c92bdf, __VMLINUX_SYMBOL_STR(module_layout) },
-	{ 0x2fdef982, __VMLINUX_SYMBOL_STR(seq_release) },
-	{ 0xe887354a, __VMLINUX_SYMBOL_STR(seq_read) },
-	{ 0x7c4c2659, __VMLINUX_SYMBOL_STR(seq_lseek) },
-	{ 0x7cc137e5, __VMLINUX_SYMBOL_STR(remove_proc_entry) },
-	{ 0x8bc20274, __VMLINUX_SYMBOL_STR(proc_create_data) },
-	{ 0xd3813bef, __VMLINUX_SYMBOL_STR(kmem_cache_alloc_trace) },
-	{ 0x7f457a3b, __VMLINUX_SYMBOL_STR(kmalloc_caches) },
-	{ 0x37a0cba, __VMLINUX_SYMBOL_STR(kfree) },
-	{ 0xfd485ec8, __VMLINUX_SYMBOL_STR(seq_printf) },
-	{ 0xd6e713b0, __VMLINUX_SYMBOL_STR(seq_open) },
+	{ 0x50eedeb8, __VMLINUX_SYMBOL_STR(printk) },
+	{ 0xf9e73082, __VMLINUX_SYMBOL_STR(scnprintf) },
+	{ 0x54a9db5f, __VMLINUX_SYMBOL_STR(_kstrtoul) },
 	{ 0xb4390f9a, __VMLINUX_SYMBOL_STR(mcount) },
 };
 
@@ -37,4 +30,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "BAAECFE893E133F1E8CA924");
+MODULE_INFO(srcversion, "B949DA8D7D5768BFF4AD9D4");

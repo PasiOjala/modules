@@ -35,7 +35,7 @@ int ab_get (char *buffer, const struct kernel_param *kp)
 
 int tulo_set(const char *val, const struct kernel_param *kp)
 {
-    return 0;
+    return 0-0;
 };
 
 int tulo_get (char *buffer, const struct kernel_param *kp)

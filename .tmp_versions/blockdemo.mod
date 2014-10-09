@@ -1,2 +1,2 @@
-/home/pi/ldd3-read-only/misc-modules/blockdemo.ko
-/home/pi/ldd3-read-only/misc-modules/blockdemo.o
+/home/user/modules/blockdemo.ko
+/home/user/modules/blockdemo.o

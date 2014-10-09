@@ -1,2 +1,2 @@
-/home/pi/ldd3-read-only/misc-modules/faulty.ko
-/home/pi/ldd3-read-only/misc-modules/faulty.o
+/home/user/modules/faulty.ko
+/home/user/modules/faulty.o

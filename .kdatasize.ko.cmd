@@ -1,1 +1,1 @@
-cmd_/home/pi/ldd3-read-only/misc-modules/kdatasize.ko := ld -EL -r  -T /home/pi/bin/workdir/linux-c256eb9968c8997dce47350d2075e42f1b3991d3/scripts/module-common.lds --build-id  -o /home/pi/ldd3-read-only/misc-modules/kdatasize.ko /home/pi/ldd3-read-only/misc-modules/kdatasize.o /home/pi/ldd3-read-only/misc-modules/kdatasize.mod.o
+cmd_/home/user/modules/kdatasize.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.13.0-24-generic/scripts/module-common.lds --build-id  -o /home/user/modules/kdatasize.ko /home/user/modules/kdatasize.o /home/user/modules/kdatasize.mod.o

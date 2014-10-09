@@ -1,2 +1,2 @@
-/home/pi/ldd3-read-only/misc-modules/jit.ko
-/home/pi/ldd3-read-only/misc-modules/jit.o
+/home/user/modules/jit.ko
+/home/user/modules/jit.o

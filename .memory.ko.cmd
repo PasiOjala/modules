@@ -1,0 +1,1 @@
+cmd_/home/user/modules/memory.ko := ld -r -m elf_i386 -T /usr/src/linux-headers-3.13.0-24-generic/scripts/module-common.lds --build-id  -o /home/user/modules/memory.ko /home/user/modules/memory.o /home/user/modules/memory.mod.o
