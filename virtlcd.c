@@ -36,7 +36,7 @@ int virt_lcd_param_rlen_set(const char *val, const struct kernel_param *kp)
     int ret=0;
     ret=kstrtoul(val,0,&l);
 //    printk("delay now : %d\n",delay);
-    if (ret<0||((int)l !=l) || (l*lcd_rows>BUF_MAX_SIZE))
+    if (ret<0||((int)l !=l) || (l*lcd_rows>BUF_MAX_SIZE) || l<1)
             return ret<0?ret:-EINVAL;
     
     *((int *)kp->arg) = l; 
@@ -76,8 +76,8 @@ int virt_lcd_buffer_get(char *buffer, const struct kernel_param *kp)
     printk(KERN_ALERT "adding newline,r was %d, c was %d\n",r,c);
     r++;
     }
-    buffer[(r+1)*char_per_row ]='\0';
-     printk(KERN_ALERT "put null at %d",(r+1)*char_per_row);
+    buffer[r*(char_per_row+1) ]='\0';
+     printk(KERN_ALERT "put null at %d",r*(char_per_row+1));
 
     
 /*
