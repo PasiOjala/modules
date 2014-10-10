@@ -3,6 +3,7 @@
 #include <string.h>
 
 int main(int argc, char *argv[]) {
+  int ret=0;
   if (argc < 2) {
     fprintf(stderr, "Need an arg to write\n");
     return 1;
@@ -24,12 +25,15 @@ int main(int argc, char *argv[]) {
     FILE *f = fopen("/dev/lcddevice", "w+");
     if (!f) return -1;
     //fseek(f, 0, SEEK_SET);
-    fwrite(argv[1], len, 1, f);
-    printf("wrote %s", argv[1]);
+    ret=fwrite(argv[1], len, 1, f);
+            printf("printing returned code %d\n",ret);
+    
+    
+    printf("wrote %s\n", argv[1]);
     //fseek(f, 0, SEEK_SET);
     //fread(buffer, len+1, 1, f);
     fclose(f);
-    
+        return ret;
 
 }
 

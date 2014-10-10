@@ -27,6 +27,7 @@
       <in>kdatasize.mod.c</in>
       <in>kerto.c</in>
       <in>kerto.mod.c</in>
+      <in>lcdtester.c</in>
       <in>memory.c</in>
       <in>memory.mod.c</in>
       <in>readstdin.c</in>
@@ -38,6 +39,7 @@
       <in>silly.mod.c</in>
       <in>sleepy.c</in>
       <in>sleepy.mod.c</in>
+      <in>stroltest.c</in>
       <in>tester.c</in>
       <in>virtlcd.c</in>
       <in>virtlcd.mod.c</in>

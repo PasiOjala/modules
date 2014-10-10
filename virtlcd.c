@@ -18,7 +18,7 @@ int chmod(const char*, mode_t);
 //static char lcd_buffer[BUF_MAX_SIZE] = "abcdefghijklmnop";
 static char lcd_buffer[BUF_MAX_SIZE];// = "abc\nefghij\nm";
 
-static int columns = 4;
+static int columns = 5;
 static int rows = 4;
 
 int virt_lcd_param_nrows_set(const char *val, const struct kernel_param *kp) {
@@ -91,7 +91,7 @@ static struct kernel_param_ops virt_lcd_param_nrows_ops = {
 
 };
 
-module_param_cb(rowsize, &virt_lcd_param_rlen_ops, &columns, S_IRUGO | S_IWUSR | S_IWGRP);
+module_param_cb(columns, &virt_lcd_param_rlen_ops, &columns, S_IRUGO | S_IWUSR | S_IWGRP);
 module_param_cb(rows, &virt_lcd_param_nrows_ops, &rows, S_IRUGO | S_IWUSR | S_IWGRP);
 module_param_cb(lcd_buffer_contents, &virt_lcd_buffer_ops, lcd_buffer, S_IRUGO);
 /*********************/
@@ -182,6 +182,7 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
     int i=0;
     int csi_n, csi_m, csi_len;
     char csi_letter;
+    int ibuffsaver=0;
     char tempbuf[2*BUF_MAX_SIZE]; //allow for one control per one char msx
     printk(KERN_ALERT "my_write , in %s\n",ubuff);
 
@@ -202,28 +203,73 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
     {
         if (tempbuf[itempbuff] == '\\')
         {
+            printk("found \\ \n");
             itempbuff++;
             switch (tempbuf[itempbuff])
             {
             case 'n':
-                
+            printk("found n \n");    
                 do
                 {
-                    buf[ibuff++] = ' ';
-                }
+                 buf[ibuff++] = ' ';
+                 }
                 while ((ibuff % columns != 0) && (ibuff<BUF_MAX_SIZE));
                 break;
             case 'e':
             {
-               
-                csi_len = check_csi(&tempbuf[itempbuff+1], &csi_n, & csi_m, & csi_letter);
+               printk(KERN_ALERT "found e\n");
+                csi_len = check_csi(&tempbuf[itempbuff+1], &csi_n, &csi_m,&csi_letter);
+                printk(KERN_ALERT " csi_len %d  %d %d %c\n",csi_len,  csi_n, csi_m, csi_letter);
                 itempbuff+=csi_len;
-                switch (csi_letter){
+                ibuffsaver=ibuff;
+                
+                switch (csi_letter)
+                {
                 case 'J':
+
+                    printk(KERN_ALERT " csi_n %d\n", csi_n);
+                    switch (csi_n)
+                    {
+
+                    case 0:
+
+                        for (; ibuff < BUF_MAX_SIZE; ibuff++)
+                        {
+                            buf[ibuff] = ' ';
+                        }
+                        printk("last char now _%c_, ibuff %d",buf[ibuff-1],ibuff);
+                        
+                        ibuff = ibuffsaver;
+                        break;
+                    case 1:
+                        for (; ibuff >= 0; ibuff--)
+                        {
+                            buf[ibuff] = ' ';
+                        }
+                        ibuff = ibuffsaver;
+                        break;
+                    case 2:
+                        for (ibuff = 0; ibuff < BUF_MAX_SIZE; ibuff++)
+                        {
+                            buf[ibuff] = ' ';
+                        }
+                        ibuff = ibuffsaver;
+                        break;
+                    default:
+                        ;
+                    };
                     break;
                 case 'H':
+                    //ok so why does not returning -EINVAL cause an error
+                    if (csi_n<1) csi_n=1;
+                    if (csi_n>rows)csi_n=rows;
+                    if (csi_m<1) csi_m=1;
+                    if (csi_m>columns) csi_m=columns;
+                    
+                    ibuff=(csi_n-1)*columns+csi_m-1;
                     break;
                 default:
+                    printk("<1> got letter %c\n", csi_letter);
                     break;
                 }
 
@@ -234,52 +280,22 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
 
         }
         else
+            if (tempbuf[itempbuff]!='\0'){
             buf[ibuff++] = tempbuf[itempbuff];
-
+            }
     }
     //buf[itempbuff]='\0';
-    strncpy(lcd_buffer,buf,ibuff);
+    printk("ibuff now %d",ibuff);
+    for (r=0;r<BUF_MAX_SIZE;r++      ){
+        printk(KERN_ALERT "buf %x at %d",buf[r],r);
+    }
+    printk(KERN_ALERT "done\n");
+    strncpy(lcd_buffer,buf,BUF_MAX_SIZE);
         
 
     // ei näin buflen=len;
     //optional
     *offs += len;
-
-    //copy to sysfs buffer
-/*
-    for (r = 0; r < rows; r++) {
-        for (c = 0; c < columns; c++) {
-            printk(KERN_ALERT "c,%d r %d, ilcd %d, iubuff %d, len %d\n", c, r, ilcd, iubuff, len);
-            if ((ubuff[iubuff] == '\n') || (iubuff >= len)) {
-                printk(KERN_ALERT "HERE \n");
-                lcd_buffer[ilcd++] = ' ';
-            } 
-
-            else if (ubuff[iubuf] == '\e') {
-
-                csi_len = check_csi(&ubuff[iubuf + 1], &csi_n, &csi_m, &csi_letter);
-                iubuf += csi_len;
-                switch (csi_letter) {
-                    case 'H':
-                        break;
-                    case 'J':
-                        break;
-                    default:
-                        ;
-                };
-
-            }
-
-            else {
-                lcd_buffer[ilcd++] = ubuff[iubuff++];
-            }
-        }
-        if (ubuff[iubuff] == '\n' && iubuff < len) {
-            printk(KERN_ALERT "TTTTTTTTHERE \n");
-            iubuff++;
-        }
-    }
-*/
     return len;
 }
 
@@ -327,6 +343,9 @@ static int virt_lcd_init(void) {
 
     //5: create device
     my_device = device_create(my_lcd_class, NULL, my_devnum, NULL, "lcddevice");
+    for (err=0;err<BUF_MAX_SIZE;err++){
+        buf[err]=' ';
+    }
     return 0;
 }
 
