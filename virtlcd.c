@@ -15,7 +15,8 @@ int chmod(const char*, mode_t);
 //Module parameters
 
 #define BUF_MAX_SIZE 80
-static char lcd_buffer[BUF_MAX_SIZE] = "0123456789   34 ";
+//static char lcd_buffer[BUF_MAX_SIZE] = "abcdefghijklmnop";
+static char lcd_buffer[BUF_MAX_SIZE] = "abc\nefghij\nm";
 
 static int columns = 4;
 static int rows = 4;
@@ -178,13 +179,12 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
     int c = 0;
     int csi_n, csi_m, csi_len;
     char csi_letter;
-    printk(KERN_ALERT "my_write\n");
+    printk(KERN_ALERT "my_write , in %s\n",ubuff);
     if (len > BUF_MAX_SIZE)
         len = BUF_MAX_SIZE;
     if (!access_ok(VERIFY_READ, ubuff, len)) {
         return -EFAULT;
     }
-
     remaining = copy_from_user(buf, ubuff, len);
     if (remaining) {
         return -EFAULT;
@@ -200,30 +200,29 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
             if ((ubuff[iubuf] == '\n') || (iubuf >= len)) {
                 printk(KERN_ALERT "HERE \n");
                 lcd_buffer[ilcd++] = ' ';
-            } else if (ubuff[iubuf] == '\e') {
+            } 
 /*
-                printk(KERN_ALERT "found escape, next %c\n", ubuff[iubuf + 1]);
-*/
+            else if (ubuff[iubuf] == '\e') {
+
                 csi_len = check_csi(&ubuff[iubuf + 1], &csi_n, &csi_m, &csi_letter);
-                iubuf+=csi_len;
-                switch (csi_letter){
+                iubuf += csi_len;
+                switch (csi_letter) {
                     case 'H':
                         break;
-                     case 'J':
+                    case 'J':
                         break;
                     default:
-                   ;     
+                        ;
                 };
-                
-                
-                
-            } else {
-                lcd_buffer[ilcd++] = ubuff[iubuf++];
 
             }
-
+*/
+            else {
+                lcd_buffer[ilcd++] = ubuff[iubuf++];
+            }
         }
         if (ubuff[iubuf] == '\n' && iubuf < len) {
+            printk(KERN_ALERT "TTTTTTTTHERE \n");
             iubuf++;
         }
     }
