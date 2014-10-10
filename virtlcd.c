@@ -16,7 +16,7 @@ int chmod(const char*, mode_t);
 
 #define BUF_MAX_SIZE 80
 //static char lcd_buffer[BUF_MAX_SIZE] = "abcdefghijklmnop";
-static char lcd_buffer[BUF_MAX_SIZE] = "abc\nefghij\nm";
+static char lcd_buffer[BUF_MAX_SIZE];// = "abc\nefghij\nm";
 
 static int columns = 4;
 static int rows = 4;
@@ -174,34 +174,87 @@ int check_csi(const char* buf, int* n, int* m, char* letter) {
 static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len, loff_t *offs) {
     int remaining;
     int ilcd = 0;
-    int iubuf = 0;
+    int iubuff= 0;
+    int ibuff= 0;
+    int itempbuff=0;
     int r = 0;
     int c = 0;
+    int i=0;
     int csi_n, csi_m, csi_len;
     char csi_letter;
+    char tempbuf[2*BUF_MAX_SIZE]; //allow for one control per one char msx
     printk(KERN_ALERT "my_write , in %s\n",ubuff);
-    if (len > BUF_MAX_SIZE)
-        len = BUF_MAX_SIZE;
+
+    if (len > 2*BUF_MAX_SIZE)
+        len = 2*BUF_MAX_SIZE;
+
     if (!access_ok(VERIFY_READ, ubuff, len)) {
         return -EFAULT;
     }
-    remaining = copy_from_user(buf, ubuff, len);
+
+   remaining = copy_from_user(tempbuf, ubuff, len);
     if (remaining) {
+        printk("remaining %d\n",remaining);
         return -EFAULT;
     }
+    printk(KERN_ALERT "my_write , tempbuff now %s\n",tempbuf);
+    for (itempbuff = 0; itempbuff < len; itempbuff++)
+    {
+        if (tempbuf[itempbuff] == '\\')
+        {
+            itempbuff++;
+            switch (tempbuf[itempbuff])
+            {
+            case 'n':
+                
+                do
+                {
+                    buf[ibuff++] = ' ';
+                }
+                while ((ibuff % columns != 0) && (ibuff<BUF_MAX_SIZE));
+                break;
+            case 'e':
+            {
+               
+                csi_len = check_csi(&tempbuf[itempbuff+1], &csi_n, & csi_m, & csi_letter);
+                itempbuff+=csi_len;
+                switch (csi_letter){
+                case 'J':
+                    break;
+                case 'H':
+                    break;
+                default:
+                    break;
+                }
+
+            }
+            default:
+                ;
+            };
+
+        }
+        else
+            buf[ibuff++] = tempbuf[itempbuff];
+
+    }
+    //buf[itempbuff]='\0';
+    strncpy(lcd_buffer,buf,ibuff);
+        
+
     // ei näin buflen=len;
     //optional
     *offs += len;
 
     //copy to sysfs buffer
+/*
     for (r = 0; r < rows; r++) {
         for (c = 0; c < columns; c++) {
-            printk(KERN_ALERT "c,%d r %d, ilcd %d, iubuf %d, len %d\n", c, r, ilcd, iubuf, len);
-            if ((ubuff[iubuf] == '\n') || (iubuf >= len)) {
+            printk(KERN_ALERT "c,%d r %d, ilcd %d, iubuff %d, len %d\n", c, r, ilcd, iubuff, len);
+            if ((ubuff[iubuff] == '\n') || (iubuff >= len)) {
                 printk(KERN_ALERT "HERE \n");
                 lcd_buffer[ilcd++] = ' ';
             } 
-/*
+
             else if (ubuff[iubuf] == '\e') {
 
                 csi_len = check_csi(&ubuff[iubuf + 1], &csi_n, &csi_m, &csi_letter);
@@ -216,16 +269,17 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
                 };
 
             }
-*/
+
             else {
-                lcd_buffer[ilcd++] = ubuff[iubuf++];
+                lcd_buffer[ilcd++] = ubuff[iubuff++];
             }
         }
-        if (ubuff[iubuf] == '\n' && iubuf < len) {
+        if (ubuff[iubuff] == '\n' && iubuff < len) {
             printk(KERN_ALERT "TTTTTTTTHERE \n");
-            iubuf++;
+            iubuff++;
         }
     }
+*/
     return len;
 }
 
