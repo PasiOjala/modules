@@ -105,6 +105,9 @@ static char buf[BUF_MAX_SIZE];
 // ei näinstatic size_t buflen;
 //static struct file_operations my_fileops;
 
+//#define EMPTY ' '
+#define EMPTY '.'
+
 static ssize_t my_read(struct file *filp, char __user *ubuff, size_t len, loff_t *offs) {
     int remaining;
     printk(KERN_ALERT "my_read\n");
@@ -173,18 +176,12 @@ int check_csi(const char* buf, int* n, int* m, char* letter) {
 
 static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len, loff_t *offs) {
     int remaining;
-    int ilcd = 0;
-    int iubuff= 0;
     int ibuff= 0;
     int itempbuff=0;
-    int r = 0;
-    int c = 0;
-    int i=0;
     int csi_n, csi_m, csi_len;
     char csi_letter;
     int ibuffsaver=0;
     char tempbuf[2*BUF_MAX_SIZE]; //allow for one control per one char msx
-    printk(KERN_ALERT "my_write , in %s\n",ubuff);
 
     if (len > 2*BUF_MAX_SIZE)
         len = 2*BUF_MAX_SIZE;
@@ -192,42 +189,38 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
     if (!access_ok(VERIFY_READ, ubuff, len)) {
         return -EFAULT;
     }
-
+    //get tempbuf from user side
    remaining = copy_from_user(tempbuf, ubuff, len);
     if (remaining) {
         printk("remaining %d\n",remaining);
         return -EFAULT;
     }
-    printk(KERN_ALERT "my_write , tempbuff now %s\n",tempbuf);
+   
+   //copy data from tempbuff to actual buffer memory
+   //in desired format
     for (itempbuff = 0; itempbuff < len; itempbuff++)
     {
         if (tempbuf[itempbuff] == '\\')
         {
-            printk("found \\ \n");
             itempbuff++;
             switch (tempbuf[itempbuff])
             {
             case 'n':
-            printk("found n \n");    
                 do
                 {
-                 buf[ibuff++] = ' ';
+                 buf[ibuff++] = EMPTY;
                  }
                 while ((ibuff % columns != 0) && (ibuff<BUF_MAX_SIZE));
                 break;
             case 'e':
             {
-               printk(KERN_ALERT "found e\n");
                 csi_len = check_csi(&tempbuf[itempbuff+1], &csi_n, &csi_m,&csi_letter);
-                printk(KERN_ALERT " csi_len %d  %d %d %c\n",csi_len,  csi_n, csi_m, csi_letter);
                 itempbuff+=csi_len;
                 ibuffsaver=ibuff;
                 
                 switch (csi_letter)
                 {
                 case 'J':
-
-                    printk(KERN_ALERT " csi_n %d\n", csi_n);
                     switch (csi_n)
                     {
 
@@ -235,23 +228,21 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
 
                         for (; ibuff < BUF_MAX_SIZE; ibuff++)
                         {
-                            buf[ibuff] = ' ';
+                            buf[ibuff] =EMPTY;
                         }
-                        printk("last char now _%c_, ibuff %d",buf[ibuff-1],ibuff);
-                        
                         ibuff = ibuffsaver;
                         break;
                     case 1:
                         for (; ibuff >= 0; ibuff--)
                         {
-                            buf[ibuff] = ' ';
+                            buf[ibuff] = EMPTY;
                         }
                         ibuff = ibuffsaver;
                         break;
                     case 2:
                         for (ibuff = 0; ibuff < BUF_MAX_SIZE; ibuff++)
                         {
-                            buf[ibuff] = ' ';
+                            buf[ibuff] =EMPTY;
                         }
                         ibuff = ibuffsaver;
                         break;
@@ -269,7 +260,7 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
                     ibuff=(csi_n-1)*columns+csi_m-1;
                     break;
                 default:
-                    printk("<1> got letter %c\n", csi_letter);
+ //                   printk("<1> got letter %c\n", csi_letter);
                     break;
                 }
 
@@ -284,16 +275,7 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
             buf[ibuff++] = tempbuf[itempbuff];
             }
     }
-    //buf[itempbuff]='\0';
-    printk("ibuff now %d",ibuff);
-    for (r=0;r<BUF_MAX_SIZE;r++      ){
-        printk(KERN_ALERT "buf %x at %d",buf[r],r);
-    }
-    printk(KERN_ALERT "done\n");
     strncpy(lcd_buffer,buf,BUF_MAX_SIZE);
-        
-
-    // ei näin buflen=len;
     //optional
     *offs += len;
     return len;
@@ -343,8 +325,9 @@ static int virt_lcd_init(void) {
 
     //5: create device
     my_device = device_create(my_lcd_class, NULL, my_devnum, NULL, "lcddevice");
+    //init buff full of spaces
     for (err=0;err<BUF_MAX_SIZE;err++){
-        buf[err]=' ';
+        buf[err]=EMPTY;
     }
     return 0;
 }
