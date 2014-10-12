@@ -18,8 +18,11 @@ int chmod(const char*, mode_t);
 //static char lcd_buffer[BUF_MAX_SIZE] = "abcdefghijklmnop";
 static char lcd_buffer[BUF_MAX_SIZE];// = "abc\nefghij\nm";
 
+#define ROWS 4
 static int columns = 5;
-static int rows = 4;
+static int rows = ROWS;
+
+int bufcols = BUF_MAX_SIZE/ROWS;
 
 int virt_lcd_param_nrows_set(const char *val, const struct kernel_param *kp) {
     long l;
@@ -31,6 +34,24 @@ int virt_lcd_param_nrows_set(const char *val, const struct kernel_param *kp) {
 
     *((int *) kp->arg) = l;
     rows = l;
+    
+       switch (rows){
+   case 1:
+       if (columns==16) {
+           bufcols=BUF_MAX_SIZE/2;
+       }
+       else bufcols = BUF_MAX_SIZE;
+       break;
+   case 2:
+       bufcols = BUF_MAX_SIZE/2;
+       break;
+   case 4:
+       bufcols = BUF_MAX_SIZE/4;
+       break;
+   default:
+       printk(KERN_ALERT "shouldn't be here\n");
+       
+   };
     return 0;
 };
 
@@ -63,14 +84,16 @@ int virt_lcd_buffer_get(char *buffer, const struct kernel_param *kp) {
     while (r < rows) {
         c = 0;
         while (c < columns) {
-            buffer[r * columns + c + r] = ((char*) kp->arg)[r * columns + c];
+            //buffer[r * columns + c + r] = ((char*) kp->arg)[r * columns + c];
+            buffer[r * columns + c + r] = ((char*) kp->arg)[r * bufcols + c];
             c++;
         }
         buffer[r * columns + c + r] = '\n';
         r++;
     }
-    buffer[r * (columns + 1) ] = '\0';
-    return rows * columns + 1/*the null*/ + rows/*the newlines*/;
+    
+    buffer[rows*(columns+1) ] = '\0';
+    return rows * (columns + 1) +1/*the null*/;
 
 };
 static struct kernel_param_ops virt_lcd_buffer_ops = {
@@ -107,25 +130,44 @@ static char buf[BUF_MAX_SIZE];
 
 //#define EMPTY ' '
 #define EMPTY '.'
+static loff_t readpos=0;
 
 static ssize_t my_read(struct file *filp, char __user *ubuff, size_t len, loff_t *offs) {
     int remaining;
-    printk(KERN_ALERT "my_read\n");
-    if (*offs + len > BUF_MAX_SIZE)
+    int eof=0;
+     printk(KERN_ALERT "my_read, filp->file_pos %d. *offs %d, len %d\n", (int)filp->f_pos, (int)*offs,len);
+   
+    
+    
+    if (*offs>=BUF_MAX_SIZE){
+        printk(KERN_ALERT "returning 0 from read\n");
+        return 0;}
+        
+
+    
+    if (*offs+ len > BUF_MAX_SIZE){
         len = BUF_MAX_SIZE - *offs;
+        
+    }
     if (len < 0) len = 0;
     if (!access_ok(VERIFY_WRITE, ubuff, len)) {
         return -EFAULT;
     }
 
-    remaining = copy_to_user(ubuff, buf, len); // ei näinmin(buflen,len));
+    remaining = copy_to_user(ubuff, buf+*offs, len); 
+/*
+    if (eof){
+        copy_to_user(ubuff+len,'\0',1);
+    }
+*/
     if (remaining) {
         return -EFAULT;
     }
     //optional
+     
     *offs += len;
-
-
+    printk(KERN_ALERT "returning:::, filp->file_pos %d. *offs %d, len %d\n", (int)filp->f_pos, (int)*offs,len);
+    //return len+eof;
     return len;
 }
 
@@ -135,42 +177,27 @@ static ssize_t my_read(struct file *filp, char __user *ubuff, size_t len, loff_t
 int check_csi(const char* buf, int* n, int* m, char* letter) {
     int csi_len = 0;
     int next_num = 0;
-/*
-    printk(KERN_ALERT "INCOMING n %d ,m %d ,let %c ,csi_len %d\n", *n, *m, *letter, csi_len);
-*/
+
     if (buf[csi_len] == '[') {
 
         while (isdigit(buf[++csi_len])) {
             next_num = next_num * 10 + (buf[csi_len] &0xf);
-
         }
         *n = next_num;
-/*
-        printk(KERN_ALERT "let %c\n",buf[++csi_len]);
-        --csi_len;
-        
-*/
         if (buf[csi_len] == ';') {
             next_num = 0;
             while (isdigit(buf[++csi_len])) {
                 next_num = next_num * 10 + (buf[csi_len]&0xf);
             }
             *m = next_num;
-
             if (isalpha(buf[csi_len])) {
                 *letter = buf[csi_len++];
             }
-
-
         }
         else if (isalpha(buf[csi_len])) {
             *letter = buf[csi_len++];
         }
     }
-
-/*
-    printk(KERN_ALERT "n %d ,m %d ,let %c ,csi_len %d\n", *n, *m, *letter, csi_len);
-*/
     return csi_len; 
 }
 
@@ -181,6 +208,7 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
     int csi_n, csi_m, csi_len;
     char csi_letter;
     int ibuffsaver=0;
+    
     char tempbuf[2*BUF_MAX_SIZE]; //allow for one control per one char msx
 
     if (len > 2*BUF_MAX_SIZE)
@@ -196,6 +224,8 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
         return -EFAULT;
     }
    
+
+   
    //copy data from tempbuff to actual buffer memory
    //in desired format
     for (itempbuff = 0; itempbuff < len; itempbuff++)
@@ -210,7 +240,8 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
                 {
                  buf[ibuff++] = EMPTY;
                  }
-                while ((ibuff % columns != 0) && (ibuff<BUF_MAX_SIZE));
+                //while ((ibuff % columns != 0) && (ibuff<BUF_MAX_SIZE));
+                while ((ibuff % bufcols!= 0) && (ibuff<BUF_MAX_SIZE));
                 break;
             case 'e':
             {
@@ -273,6 +304,9 @@ static ssize_t my_write(struct file *filp, const char __user *ubuff, size_t len,
         else
             if (tempbuf[itempbuff]!='\0'){
             buf[ibuff++] = tempbuf[itempbuff];
+            if (ibuff%columns==0){
+                ibuff+=bufcols-columns;
+            }
             }
     }
     strncpy(lcd_buffer,buf,BUF_MAX_SIZE);
@@ -291,11 +325,42 @@ static int my_release(struct inode * my_inode, struct file *filp) {
     return 0;
 }
 
+static loff_t my_llseek(struct file *filp, loff_t off, int whence)
+{
+        //struct device *dev = filp->private_data;
+        loff_t newpos;
+
+        printk ("SEEK: off = %d, whence= %d, fpos %d\n",(int)off, whence, (int)filp->f_pos);
+        switch(whence) {
+          case 0: /* SEEK_SET */
+                newpos = off;
+                break;
+
+          case 1: /* SEEK_CUR */
+                newpos = filp->f_pos + off;
+                break;
+
+          case 2: /* SEEK_END */
+                newpos = BUF_MAX_SIZE+ off;
+                break;
+
+          default: /* can't happen */
+                return -EINVAL;
+        }
+        if (newpos < 0) return -EINVAL;
+        if (newpos > BUF_MAX_SIZE) newpos=BUF_MAX_SIZE;
+        filp->f_pos = newpos;
+        printk ("SEEK:;;; return newpos%d\n",newpos);
+        return newpos;
+}
+
+
 struct file_operations my_fileops = {
     .read = my_read,
     .write = my_write,
     .open = my_open,
     .release = my_release,
+    .llseek = my_llseek,
 };
 
 static int virt_lcd_init(void) {
