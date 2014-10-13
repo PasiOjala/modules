@@ -3,6 +3,7 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
       <in>blockdemo.mod.c</in>
+      <in>buttons.c</in>
       <in>complete.c</in>
       <in>complete.mod.c</in>
       <in>devdemo.c</in>
@@ -25,6 +26,9 @@
       <in>kdatasize.mod.c</in>
       <in>kerto.c</in>
       <in>kerto.mod.c</in>
+      <in>lcdtester.c</in>
+      <in>memory.c</in>
+      <in>memory.mod.c</in>
       <in>readstdin.c</in>
       <in>rwdemo.c</in>
       <in>rwdemo.mod.c</in>
@@ -34,10 +38,14 @@
       <in>silly.mod.c</in>
       <in>sleepy.c</in>
       <in>sleepy.mod.c</in>
+      <in>stroltest.c</in>
       <in>tester.c</in>
+      <in>virtlcd.c</in>
+      <in>virtlcd.mod.c</in>
     </df>
     <itemPath>//pasipii/pi/ldd3-read-only/misc-modules/blockdemo.c</itemPath>
     <itemPath>//pasipii/pi/ldd3-read-only/misc-modules/fifodemo.c</itemPath>
+    <itemPath>//pasipii/pi/ldd3-read-only/misc-modules/virtlcd.c</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

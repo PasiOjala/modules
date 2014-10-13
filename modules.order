@@ -1,3 +1,5 @@
+kernel//home/pi/ldd3-read-only/misc-modules/virtlcd.ko
+kernel//home/pi/ldd3-read-only/misc-modules/memory.ko
 kernel//home/pi/ldd3-read-only/misc-modules/blockdemo.ko
 kernel//home/pi/ldd3-read-only/misc-modules/rwdemo.ko
 kernel//home/pi/ldd3-read-only/misc-modules/fifodemo.ko
