@@ -2,8 +2,22 @@
 <configurationDescriptor version="95">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="." name="0">
+      <df name="buttons">
+        <in>buttons.c</in>
+        <in>buttons.mod.c</in>
+      </df>
+      <df name="lcd">
+        <in>lcd.c</in>
+        <in>lcdsim.mod.c</in>
+      </df>
+      <df name="lcdsim">
+        <in>lcdsim.c</in>
+        <in>lcdsim.mod.c</in>
+      </df>
+      <df name="ownbuttons">
+        <in>buttons.c</in>
+      </df>
       <in>blockdemo.mod.c</in>
-      <in>buttons.c</in>
       <in>complete.c</in>
       <in>complete.mod.c</in>
       <in>devdemo.c</in>
@@ -26,6 +40,7 @@
       <in>kdatasize.mod.c</in>
       <in>kerto.c</in>
       <in>kerto.mod.c</in>
+      <in>lcdsim.c</in>
       <in>lcdtester.c</in>
       <in>memory.c</in>
       <in>memory.mod.c</in>

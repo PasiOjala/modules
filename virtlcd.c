@@ -73,22 +73,28 @@ static wait_queue_head_t readq;
 
 module_param(button_events, int, 0644);
 
-int red=1;
-int green = 1;
+//int red=1;
+//int green = 1;
+hghgl;
 
 void do_leds(int input){
     printk("< do leds, input %d\n",input);
     if(input&1){
-        SET(RED,red^1);
-        red^=1;
+//        SET(RED,red^1);
+//        red^=1;
+//        SET(GREEN,1); //1 is off
+//        green=1;
+        SET(RED,GET(RED)^1);
+        //red^=1;
         SET(GREEN,1); //1 is off
-        green=1;
+        //green=1;
+
     }
     if(input&2){
-        SET(GREEN,green^1);
-        green^=1;
+        SET(GREEN,GET(GREEN)^1);
+//        green^=1;
         SET(RED,1); //1 is down
-        red=1;
+//        red=1;
     }
 }
 
