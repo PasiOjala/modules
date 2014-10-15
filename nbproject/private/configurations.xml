@@ -8,6 +8,7 @@
       </df>
       <df name="lcd">
         <in>lcd.c</in>
+        <in>lcd.mod.c</in>
         <in>lcdsim.mod.c</in>
       </df>
       <df name="lcdsim">
