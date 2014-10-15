@@ -157,6 +157,7 @@ module_param(gpiobase, int, 0444);
 #define SET(pin, value) gpio_set_value_cansleep(gpiobase+(pin), (value))
 #define GET(pin) gpio_get_value_cansleep(gpiobase+(pin))
 
+static void lcd_write_buffer_to_hw(void);
 
 static void write_nybble(int n){
 //    SET(LCD_E,0);
@@ -218,15 +219,36 @@ static void lcd_hw_init(void){
     SET(BL_BLUE,0);
     SET(BL_GREEN,0);
     int i;
-    for (i=0x30;i<0x50;i++){
-        write_data(i);
+    write_command(1); //clear display
+//    for (i=0x30;i<0x50;i++){
+//        write_data(i);
+//    }
+    lcd_write_buffer_to_hw();
+}
+
+static const int row_start[]={0,64,20,84};
+static void lcd_write_line(int line)
+{
+    int i=0;
+    
+    write_command(0x80+row_start[line]); //set ddram address
+    int row_offset=line*20;
+    if (lcd_size.lines==2){
+        row_offset=line*40;
     }
     
+    for (i=0;i<lcd_size.characters;i++){
+        write_data(lcd_buffer[row_offset+i]);
+    }
 }
+
 
 static void lcd_write_buffer_to_hw(void)
 {
-    
+    int i;
+    for (i=0;i<lcd_size.lines;i++){
+        lcd_write_line(i);
+    }
 }
 
 static void lcd_hw_exit(void){
@@ -608,7 +630,7 @@ static ssize_t dev_write(struct file *filp, const char __user *ubuff, size_t len
   wsp_process(&fs->parser);
 
   kfree(buffer);
-
+  lcd_write_buffer_to_hw();
   return ret;
 }
 

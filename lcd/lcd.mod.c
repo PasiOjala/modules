@@ -33,7 +33,6 @@ __attribute__((section("__versions"))) = {
 	{ 0xa16ba74d, __VMLINUX_SYMBOL_STR(cdev_init) },
 	{ 0x29537c9e, __VMLINUX_SYMBOL_STR(alloc_chrdev_region) },
 	{ 0x3f7e3ce4, __VMLINUX_SYMBOL_STR(__class_create) },
-	{ 0x3441c3d6, __VMLINUX_SYMBOL_STR(gpio_set_value_cansleep) },
 	{ 0x8f678b07, __VMLINUX_SYMBOL_STR(__stack_chk_guard) },
 	{ 0xf0fdf6cb, __VMLINUX_SYMBOL_STR(__stack_chk_fail) },
 	{ 0x70c3f32b, __VMLINUX_SYMBOL_STR(i2c_new_device) },
@@ -42,6 +41,7 @@ __attribute__((section("__versions"))) = {
 	{ 0x67c2fa54, __VMLINUX_SYMBOL_STR(__copy_to_user) },
 	{ 0xfbc74f64, __VMLINUX_SYMBOL_STR(__copy_from_user) },
 	{ 0xfa2a45e, __VMLINUX_SYMBOL_STR(__memzero) },
+	{ 0x3441c3d6, __VMLINUX_SYMBOL_STR(gpio_set_value_cansleep) },
 	{ 0x8ef51045, __VMLINUX_SYMBOL_STR(kmalloc_caches) },
 	{ 0xd511a1f3, __VMLINUX_SYMBOL_STR(kmem_cache_alloc) },
 	{ 0x2e5810c6, __VMLINUX_SYMBOL_STR(__aeabi_unwind_cpp_pr1) },
@@ -59,4 +59,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "BDA87374F62687F17CB82EF");
+MODULE_INFO(srcversion, "B079DB51F7C124A15CE5E09");
